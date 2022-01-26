@@ -36,10 +36,10 @@ async def start_command(client: Client, message: Message):
             return
         string = await decode(base64_string)
         argument = string.split("-")
-        if len(argument) == 3:
+        if len(argument) == 4:
             try:
                 start = int(int(argument[1]) / abs(client.db_channel.id))
-                end = int(int(argument[2]) / abs(client.db_channel.id))
+                end = int(int(argument[3]) / abs(client.db_channel.id))
             except:
                 return
             if start <= end:
@@ -52,7 +52,7 @@ async def start_command(client: Client, message: Message):
                     i -= 1
                     if i < end:
                         break
-        elif len(argument) == 2:
+        elif len(argument) == 3:
             try:
                 ids = [int(int(argument[1]) / abs(client.db_channel.id))]
             except:
@@ -114,8 +114,10 @@ async def not_joined(client: Client, message: Message):
     buttons = [
         [
             InlineKeyboardButton(
-                "Join Channel",
+                "Join 1",
                 url = client.invitelink)
+                "Join 2",
+                url = client.invitelink3)
         ]
     ]
     try:

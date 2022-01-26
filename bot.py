@@ -24,9 +24,11 @@ class Bot(Client):
         await super().start()
         usr_bot_me = await self.get_me()
 
-        if FORCE_SUB_CHANNEL:
+        if FORCE_SUB_CHANNEL,:
+           FORCE_SUB_CHANNEL2:
             try:
-                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
+                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL),
+                                                         (FORCE_SUB_CHANNEL2)
                 self.invitelink = link
             except Exception as a:
                 self.LOGGER(__name__).warning(a)

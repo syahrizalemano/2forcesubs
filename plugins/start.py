@@ -55,6 +55,7 @@ async def start_command(client: Client, message: Message):
         elif len(argument) == 3:
             try:
                 ids = [int(int(argument[1]) / abs(client.db_channel.id))]
+                ids = [int(int(argument[3]) / abs(client.db_channel.id))]
             except:
                 return
         temp_msg = await message.reply("Please wait...")
@@ -116,16 +117,27 @@ async def not_joined(client: Client, message: Message):
             InlineKeyboardButton(
                 "Join 1",
                 url = client.invitelink)
-                "Join 2",
-                url = client.invitelink3)
         ]
     ]
+
+    try:
+        buttons.append(
+            [
+                InlineKeyboardButton(
+                    text = 'Try Again',
+                    url = client.invitelink3)
+                )
+                
+             ]
+        )
+                    
     try:
         buttons.append(
             [
                 InlineKeyboardButton(
                     text = 'Try Again',
                     url = f"https://t.me/{client.username}?start={message.command[1]}"
+                   
                 )
             ]
         )

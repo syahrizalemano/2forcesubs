@@ -24,9 +24,9 @@ class Bot(Client):
         await super().start()
         usr_bot_me = await self.get_me()
 
-        if FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL2:
+        if FORCE_SUB_CHANNEL:
             try:
-                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL), (FORCE_SUB_CHANNEL2)
+                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL)
                 self.invitelink = link
             except Exception as a:
                 self.LOGGER(__name__).warning(a)
@@ -34,6 +34,16 @@ class Bot(Client):
                 self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL2}")
                 self.LOGGER(__name__).info("\nBot Stopped.")
                 sys.exit()
+             
+            try:
+                link = await self.export_chat_invite_link(FORCE_SUB_CHANNEL2)
+                self.invitelink3 = link
+            except Exception as a:
+                self.LOGGER(__name__).warning(a)
+                self.LOGGER(__name__).warning("Bot can't Export Invite link from Force Sub Channel2!")
+                self.LOGGER(__name__).warning(f"Please Double check the FORCE_SUB_CHANNEL value and Make sure Bot is Admin in channel with Invite Users via Link Permission, Current Force Sub Channel Value: {FORCE_SUB_CHANNEL, FORCE_SUB_CHANNEL2}")
+                self.LOGGER(__name__).info("\nBot Stopped.")
+                sys.exit()                
         try:
             db_channel = await self.get_chat(CHANNEL_ID)
             self.db_channel = db_channel

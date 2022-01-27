@@ -1,6 +1,7 @@
 # 2FORCESUBS TELEGRAM
 
-
+### Heroku
+<p><a href="https://heroku.com/deploy?template=https://github.com/syahrizalemano/2forcesubs"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-grey?style=for-the-badge&logo=heroku" width="200""/></a></p>
 
 #### Deploy in your VPS
 ````bash
